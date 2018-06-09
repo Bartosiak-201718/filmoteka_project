@@ -1,7 +1,13 @@
 package com.filmoteka.controller;
 
 import com.filmoteka.sdo.Actor;
+import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import io.restassured.specification.RequestSpecification;
+import org.json.JSONException;
+import org.json.JSONObject;
+import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
@@ -20,11 +26,20 @@ public class ActorControllerTest {
     }
 
     @Test
-    public void deleteActor() {
-    }
+    public void createActor() throws JSONException {
+        Actor actor = new Actor();
+        actor.setFirstName ("Jan");
+        actor.setLastName ("Kowalski");
 
-    @Test
-    public void createActor() {
+        given().body (actor)
+                .when ()
+                .contentType (ContentType.JSON)
+                .post ("/api/actors");
+
+        get("/api/actors/4").then().statusCode(200).assertThat()
+                .body("firstName", equalTo("Jan"))
+                .body("lastName", equalTo("Kowalski"))
+                .body("id", equalTo(4));
     }
 
     @Test
@@ -45,6 +60,10 @@ public class ActorControllerTest {
                 .body("lastName", equalTo("Figura"))
                 .body("id", equalTo(2));
 
+    }
+
+    @Test
+    public void deleteActor() {
     }
 
     @Test
