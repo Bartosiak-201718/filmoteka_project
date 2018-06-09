@@ -1,5 +1,6 @@
-before_install: cd SpringBootMySQLApp
-chmod +x mvnw
+before_install: 
+ - cd SpringBootMySQLApp
+ - chmod +x mvnw
 sudo: required
 dist: trusty
 language: java
