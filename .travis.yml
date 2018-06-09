@@ -1,6 +1,7 @@
 before_install: 
  - cd SpringBootMySQLApp
  - chmod +x mvnw
+ - echo "USE mysql;\nUPDATE user SET password=PASSWORD('1234') WHERE user='root';\nFLUSH PRIVILEGES;\n" | mysql -u root
 sudo: required
 dist: trusty
 language: java
