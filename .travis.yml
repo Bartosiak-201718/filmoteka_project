@@ -7,6 +7,8 @@ before_install:
  - sudo service mysql restart
 sudo: required
 dist: trusty
+services:
+  - mysql
 language: java
 jdk:
  - oraclejdk8
