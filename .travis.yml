@@ -1,3 +1,4 @@
+before_install: cd SpringBootMySQLApp
 sudo: required
 dist: trusty
 language: java
