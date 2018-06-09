@@ -40,6 +40,7 @@ public class MovieService {
         m.setDescriptionOfMovie(movie.getDescriptionOfMovie());
         m.setDuration(movie.getDuration());
         m.setReleaseDate(movie.getReleaseDate());
+
         m = movieRepository.save(m);
         com.filmoteka.sdo.Movie saved = new com.filmoteka.sdo.Movie(m);
         return saved;

@@ -57,6 +57,62 @@ public class Movie implements Serializable {
     @JoinColumn(name = "id_countryOfProduction")
     private CountryOfProduction countryOfProduction;
 
+    public List<Actor> getActors() {
+        return actors;
+    }
+
+    public void setActors(List<Actor> actors) {
+        this.actors = actors;
+    }
+
+    public Distributor getDistributor() {
+        return distributor;
+    }
+
+    public void setDistributor(Distributor distributor) {
+        this.distributor = distributor;
+    }
+
+    public List<Award> getAwards() {
+        return awards;
+    }
+
+    public void setAwards(List<Award> awards) {
+        this.awards = awards;
+    }
+
+    public Director getDirector() {
+        return director;
+    }
+
+    public void setDirector(Director director) {
+        this.director = director;
+    }
+
+    public CountryOfProduction getCountryOfProduction() {
+        return countryOfProduction;
+    }
+
+    public void setCountryOfProduction(CountryOfProduction countryOfProduction) {
+        this.countryOfProduction = countryOfProduction;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
+    }
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_genre")
     private Genre genre;

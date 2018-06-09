@@ -29,6 +29,7 @@ public class Movie {
         this.descriptionOfMovie = movie.getDescriptionOfMovie();
         this.duration = movie.getDuration();
         this.id = movie.getId();
+
     }
 
     public Long getId() {
@@ -78,6 +79,13 @@ public class Movie {
     private LocalDateTime releaseDate;
     private String descriptionOfMovie;
     private Integer duration;
+    private List<Actor> actorList;
+    private Distributor distributor;
+    private List<Award> awardList;
+    private Director director;
+    private CountryOfProduction countryOfProduction;
+    private Genre genre;
+
 
     public List<Actor> getActorList() {
         return actorList;
@@ -127,12 +135,6 @@ public class Movie {
         this.genre = genre;
     }
 
-    private List<Actor> actorList;
-    private Distributor distributor;
-    private List<Award> awardList;
-    private Director director;
-    private CountryOfProduction countryOfProduction;
-    private Genre genre;
 
     public Movie(Long id, String title, LocalDateTime releaseDate, String descriptionOfMovie, Integer duration, List<Actor> actorList, Distributor distributor, List<Award> awardList, Director director, CountryOfProduction countryOfProduction, Genre genre) {
         this.id = id;
