@@ -19,6 +19,10 @@ public class Movie {
         this.duration = duration;
     }
 
+    public Movie(){
+
+    }
+
     public Movie(com.filmoteka.dao.Movie movie){
         this.title = movie.getTitle();
         this.releaseDate = movie.getReleaseDate();

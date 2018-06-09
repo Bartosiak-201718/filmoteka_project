@@ -15,6 +15,10 @@ public class Genre {
         this.id = genre.getId();
     }
 
+    public Genre(){
+
+    }
+
     public Long getId() {
         return id;
     }

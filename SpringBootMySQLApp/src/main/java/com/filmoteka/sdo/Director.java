@@ -17,6 +17,10 @@ public class Director {
         this.id = director.getId();
     }
 
+    public Director(){
+
+    }
+
     public Long getId() {
         return id;
     }

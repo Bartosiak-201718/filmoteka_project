@@ -20,7 +20,7 @@ public class AwardController {
     @Autowired
     AwardService awardService;
     @RequestMapping(value = "/awards/{id}", method = RequestMethod.GET)
-    ResponseEntity<Award> getAward(@PathVariable("id") Long id) {
+    ResponseEntity<Award> getAward (@PathVariable("id") Long id) {
         try {
             Award award = new Award(awardService.getById(id));
             return new ResponseEntity<Award>(award, HttpStatus.OK);
@@ -29,12 +29,12 @@ public class AwardController {
         }
     }
     @RequestMapping(value = "/awards/{id}", method = RequestMethod.DELETE)
-    public void deleteActor(@PathVariable("id") Long id) {
+    public void deleteAward(@PathVariable("id") Long id) {
         awardService.deleteById(id);
     }
 
     @RequestMapping(value = "/awards", method = RequestMethod.POST)
-    public ResponseEntity<Award> createActor(@RequestBody Award award) {
+    public ResponseEntity<Award> createAward(@RequestBody Award award) {
         try {
             Award newAward = awardService.createAward(award);
             return new ResponseEntity<Award>(newAward, HttpStatus.OK);

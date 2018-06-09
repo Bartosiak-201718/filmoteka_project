@@ -21,6 +21,10 @@ public class User {
         this.city = city;
     }
 
+    public User(){
+
+    }
+
     public User(com.filmoteka.dao.User user) {
         this.id = user.getId();
         this.login = user.getLogin();

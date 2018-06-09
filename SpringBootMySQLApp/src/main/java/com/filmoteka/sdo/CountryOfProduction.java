@@ -15,6 +15,10 @@ public class CountryOfProduction {
         this.id = country.getId();
     }
 
+    public CountryOfProduction(){
+
+    }
+
     public Long getId() {
         return id;
     }

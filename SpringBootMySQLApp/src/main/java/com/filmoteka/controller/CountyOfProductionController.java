@@ -18,7 +18,7 @@ public class CountyOfProductionController {
     @Autowired
     CountryOfProductionService countryOfProductionService;
     @RequestMapping(value = "/country/{id}", method = RequestMethod.GET)
-    ResponseEntity<CountryOfProduction> getCountry (@PathVariable("id") Long id) {
+    ResponseEntity<CountryOfProduction> getCountryofProduction (@PathVariable("id") Long id) {
         try {
             CountryOfProduction countryOfProduction = new CountryOfProduction(countryOfProductionService.getById(id));
             return new ResponseEntity<CountryOfProduction>(countryOfProduction, HttpStatus.OK);

@@ -15,6 +15,10 @@ public class Award {
         this.id = award.getId();
     }
 
+    public Award(){
+
+    }
+
     public Long getId() {
         return id;
     }

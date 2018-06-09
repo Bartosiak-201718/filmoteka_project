@@ -15,6 +15,11 @@ public class Distributor {
         this.id = distributor.getId();
     }
 
+    public Distributor(){
+
+    }
+
+
     public Long getId() {
         return id;
     }

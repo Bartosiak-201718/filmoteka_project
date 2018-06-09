@@ -15,6 +15,10 @@ public class Review {
         this.id = review.getId();
     }
 
+    public Review(){
+
+    }
+
     public Long getId() {
         return id;
     }
