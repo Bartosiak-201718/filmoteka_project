@@ -11,7 +11,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static io.restassured.RestAssured. *;
+import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
@@ -28,13 +28,14 @@ public class ActorControllerTest {
     @Test
     public void createActor() throws JSONException {
         Actor actor = new Actor();
-        actor.setFirstName ("Jan");
-        actor.setLastName ("Kowalski");
+        actor.setFirstName("Jan");
+        actor.setLastName("Kowalski");
+        actor.setId((long) 4);
 
-        given().body (actor)
-                .when ()
-                .contentType (ContentType.JSON)
-                .post ("/api/actors");
+        given().body(actor)
+                .when()
+                .contentType(ContentType.JSON)
+                .post("/api/actors");
 
         get("/api/actors/4").then().statusCode(200).assertThat()
                 .body("firstName", equalTo("Jan"))
@@ -47,13 +48,13 @@ public class ActorControllerTest {
 
         Actor actor = new Actor();
         actor.setId((long) 2);
-        actor.setFirstName ("Katarzyna");
-        actor.setLastName ("Figura");
+        actor.setFirstName("Katarzyna");
+        actor.setLastName("Figura");
 
-        given().body (actor)
-                .when ()
-                .contentType (ContentType.JSON)
-                .put ("/api/actors/2");
+        given().body(actor)
+                .when()
+                .contentType(ContentType.JSON)
+                .put("/api/actors/2");
 
         get("/api/actors/2").then().statusCode(200).assertThat()
                 .body("firstName", equalTo("Katarzyna"))
@@ -73,6 +74,13 @@ public class ActorControllerTest {
 
     @Test
     public void getAllActors() {
-
+        given().
+                when().
+                get("/api/actors").
+                then().
+                assertThat().
+                body("id", hasItems(1, 2, 4))
+                .body("firstName", hasItems("Jan", "Jason", "Katarzyna"))
+                .body("lastName", hasItems("Figura", "Statham", "Kowalski"));
     }
 }
