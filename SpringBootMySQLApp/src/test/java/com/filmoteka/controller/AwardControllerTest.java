@@ -68,5 +68,12 @@ public class AwardControllerTest {
 
     @Test
     public void getAllAwards() {
+        given().
+                when().
+                get("/api/awards").
+                then().
+                assertThat().
+                body("id", hasItems(1, 2))
+                .body("name", hasItems("BAFTA", "Oscar 2018"));
     }
 }

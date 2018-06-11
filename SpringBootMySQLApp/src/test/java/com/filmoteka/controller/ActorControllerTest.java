@@ -79,8 +79,8 @@ public class ActorControllerTest {
                 get("/api/actors").
                 then().
                 assertThat().
-                body("id", hasItems(1, 2, 4))
-                .body("firstName", hasItems("Jan", "Jason", "Katarzyna"))
-                .body("lastName", hasItems("Figura", "Statham", "Kowalski"));
+                body("id", hasItems(1, 2))
+                .body("firstName", hasItems("Jason", "Adam"))
+                .body("lastName", hasItems("Piekarski", "Statham"));
     }
 }

@@ -66,7 +66,7 @@ public class DistributorControllerTest {
                 .get("/api/distributors")
                 .then()
                 .assertThat()
-                .body("id", hasItems(1, 11, 12))
-                .body("name", hasItems("Polska Film", "MCU", "Warner Bros"));
+                .body("id", hasItems(11, 12, 13))
+                .body("name", hasItems("Polska Film", "MCU", "Disney"));
     }
 }
