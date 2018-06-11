@@ -12,14 +12,14 @@ import java.util.List;
  */
 
 @Entity
-public class Distributor implements Serializable{
+public class Distributor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank
-    @Size(min=2, max=30)
+    @Size(min = 2, max = 30)
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)

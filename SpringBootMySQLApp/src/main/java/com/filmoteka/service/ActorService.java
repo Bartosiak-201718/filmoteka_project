@@ -19,21 +19,20 @@ public class ActorService {
     @Autowired
     ActorRepository actorRepository;
 
-    public Actor getById(Long id){
+    public Actor getById(Long id) {
         return actorRepository.getOne(id);
     }
 
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         try {
             actorRepository.deleteById(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             logger.warn("IllegalArgumentException in application");
         }
     }
 
-    public com.filmoteka.sdo.Actor createActor (com.filmoteka.sdo.Actor actor){
+    public com.filmoteka.sdo.Actor createActor(com.filmoteka.sdo.Actor actor) {
         Actor a = new Actor();
         a.setFirstName(actor.getFirstName());
         a.setLastName(actor.getLastName());
@@ -43,23 +42,23 @@ public class ActorService {
     }
 
 
-    public com.filmoteka.sdo.Actor updateActor (com.filmoteka.sdo.Actor actor, Long id) throws IncorrectIdException {
+    public com.filmoteka.sdo.Actor updateActor(com.filmoteka.sdo.Actor actor, Long id) throws IncorrectIdException {
 
         Actor actor1 = new Actor();
-        if(!actor.getId().equals(id)) {
+        if (!actor.getId().equals(id)) {
             throw new IncorrectIdException("Wrong id!");
         }
-            actor1 = actorRepository.getOne(id);
-            actor1.setFirstName(actor.getFirstName());
-            actor1.setLastName(actor.getLastName());
-            actor1 = actorRepository.save(actor1);
-            com.filmoteka.sdo.Actor saved = new com.filmoteka.sdo.Actor(actor1);
-            return saved;
+        actor1 = actorRepository.getOne(id);
+        actor1.setFirstName(actor.getFirstName());
+        actor1.setLastName(actor.getLastName());
+        actor1 = actorRepository.save(actor1);
+        com.filmoteka.sdo.Actor saved = new com.filmoteka.sdo.Actor(actor1);
+        return saved;
     }
 
-    public List<com.filmoteka.sdo.Actor> getAllActors(){
-        List<com.filmoteka.sdo.Actor>actorList=new ArrayList<com.filmoteka.sdo.Actor>();
-        for (Actor actorDao:actorRepository.findAll()) {
+    public List<com.filmoteka.sdo.Actor> getAllActors() {
+        List<com.filmoteka.sdo.Actor> actorList = new ArrayList<com.filmoteka.sdo.Actor>();
+        for (Actor actorDao : actorRepository.findAll()) {
             com.filmoteka.sdo.Actor actor = new com.filmoteka.sdo.Actor(actorDao);
             actorList.add(actor);
         }

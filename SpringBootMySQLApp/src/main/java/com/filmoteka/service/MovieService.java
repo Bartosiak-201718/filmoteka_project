@@ -20,21 +20,20 @@ public class MovieService {
     @Autowired
     MovieRepository movieRepository;
 
-    public Movie getById(Long id){
+    public Movie getById(Long id) {
         return movieRepository.getOne(id);
     }
 
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         try {
             movieRepository.deleteById(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             logger.warn("IllegalArgumentException in application");
         }
     }
 
-    public com.filmoteka.sdo.Movie createMovie (com.filmoteka.sdo.Movie movie){
+    public com.filmoteka.sdo.Movie createMovie(com.filmoteka.sdo.Movie movie) {
         Movie m = new Movie();
         m.setTitle(movie.getTitle());
         m.setDescriptionOfMovie(movie.getDescriptionOfMovie());
@@ -46,10 +45,10 @@ public class MovieService {
         return saved;
     }
 
-    public com.filmoteka.sdo.Movie updateMovie (com.filmoteka.sdo.Movie movie, Long id) throws IncorrectIdException {
+    public com.filmoteka.sdo.Movie updateMovie(com.filmoteka.sdo.Movie movie, Long id) throws IncorrectIdException {
 
         Movie movie1 = new Movie();
-        if(!movie.getId().equals(id)) {
+        if (!movie.getId().equals(id)) {
             throw new IncorrectIdException("Wrong id!");
         }
         movie1 = movieRepository.getOne(id);
@@ -62,9 +61,9 @@ public class MovieService {
         return saved;
     }
 
-    public List<com.filmoteka.sdo.Movie> getAllMovies(){
-        List<com.filmoteka.sdo.Movie>movieList= new ArrayList<>();
-        for (Movie movieDao: movieRepository.findAll()) {
+    public List<com.filmoteka.sdo.Movie> getAllMovies() {
+        List<com.filmoteka.sdo.Movie> movieList = new ArrayList<>();
+        for (Movie movieDao : movieRepository.findAll()) {
             com.filmoteka.sdo.Movie movie = new com.filmoteka.sdo.Movie(movieDao);
             movieList.add(movie);
         }

@@ -14,26 +14,26 @@ import java.util.List;
  */
 
 @Entity
-public class User implements Serializable{
+public class User implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotBlank
-    @Size(min=4, max=20)
+    @Size(min = 4, max = 20)
     private String login;
 
     @NotBlank
-    @Size(min=4, max=20)
+    @Size(min = 4, max = 20)
     private String password;
 
     @NotBlank
-    @Size(min=4, max=20)
+    @Size(min = 4, max = 20)
     private String userName;
 
     @NotBlank
-    @Size(min=4, max=30)
+    @Size(min = 4, max = 30)
     private String city;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)

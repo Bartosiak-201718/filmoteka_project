@@ -21,7 +21,7 @@ public class User {
         this.city = city;
     }
 
-    public User(){
+    public User() {
 
     }
 

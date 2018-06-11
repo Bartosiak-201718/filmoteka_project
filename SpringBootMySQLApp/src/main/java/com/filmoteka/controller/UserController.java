@@ -18,40 +18,43 @@ public class UserController {
 
     @Autowired
     UserService userService;
-    @RequestMapping(value = "/users/{id}" , method = RequestMethod.GET)
-    ResponseEntity<User> getUser(@PathVariable("id") Long id){
-        try{
+
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.GET)
+    ResponseEntity<User> getUser(@PathVariable("id") Long id) {
+        try {
             User user = new User(userService.getById(id));
             return new ResponseEntity<User>(user, HttpStatus.OK);
-        }catch (EntityNotFoundException e){
+        } catch (EntityNotFoundException e) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-    @RequestMapping(value = "/users/{id}" , method = RequestMethod.DELETE)
-    public void deleteUser(@PathVariable("id") Long id){
+
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.DELETE)
+    public void deleteUser(@PathVariable("id") Long id) {
         userService.deleteById(id);
     }
+
     @RequestMapping(value = "/users", method = RequestMethod.POST)
-    public ResponseEntity <User> createUser (@RequestBody User user){
+    public ResponseEntity<User> createUser(@RequestBody User user) {
         try {
             User newUser = userService.createUser(user);
             return new ResponseEntity<User>(newUser, HttpStatus.OK);
-        }
-        catch (Exception c){
+        } catch (Exception c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @RequestMapping(value ="/users/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<User> updateUser (@PathVariable("id") Long id, @RequestBody User user){
-        try{
-            User user1 = userService.updateUser(user,id);
-            return new ResponseEntity<User>(user1,HttpStatus.OK);
-        }
-        catch (Exception c){
+
+    @RequestMapping(value = "/users/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<User> updateUser(@PathVariable("id") Long id, @RequestBody User user) {
+        try {
+            User user1 = userService.updateUser(user, id);
+            return new ResponseEntity<User>(user1, HttpStatus.OK);
+        } catch (Exception c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @RequestMapping(value="/users", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
     public List<User> getAllUsers() {
         return userService.getAllUsers();
     }

@@ -10,12 +10,12 @@ public class Distributor {
         this.name = name;
     }
 
-    public Distributor(com.filmoteka.dao.Distributor distributor){
+    public Distributor(com.filmoteka.dao.Distributor distributor) {
         this.name = distributor.getName();
         this.id = distributor.getId();
     }
 
-    public Distributor(){
+    public Distributor() {
 
     }
 

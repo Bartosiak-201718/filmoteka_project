@@ -33,7 +33,7 @@ public class CountryOfProductionService {
         }
     }
 
-    public com.filmoteka.sdo.CountryOfProduction createCountryOfProduction (com.filmoteka.sdo.CountryOfProduction countryOfProduction) {
+    public com.filmoteka.sdo.CountryOfProduction createCountryOfProduction(com.filmoteka.sdo.CountryOfProduction countryOfProduction) {
         CountryOfProduction countryOfProduction1 = new CountryOfProduction();
         countryOfProduction1.setName(countryOfProduction.getName());
         countryOfProduction1 = countryOfProductionRepository.save(countryOfProduction1);

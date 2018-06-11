@@ -10,12 +10,12 @@ public class Genre {
         this.name = name;
     }
 
-    public Genre(com.filmoteka.dao.Genre genre){
+    public Genre(com.filmoteka.dao.Genre genre) {
         this.name = genre.getName();
         this.id = genre.getId();
     }
 
-    public Genre(){
+    public Genre() {
 
     }
 

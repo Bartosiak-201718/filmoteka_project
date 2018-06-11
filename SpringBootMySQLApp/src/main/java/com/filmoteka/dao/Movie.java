@@ -21,32 +21,32 @@ public class Movie implements Serializable {
     private Long id;
 
     @NotBlank
-    @Size(min=1, max=20)
+    @Size(min = 1, max = 20)
     private String title;
 
     @NotNull
     private LocalDateTime releaseDate;
 
     @NotBlank
-    @Size(min=20, max=500)
+    @Size(min = 20, max = 500)
     private String descriptionOfMovie;
 
     @NotNull
     private Integer duration;
 
-    @ManyToMany (fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "Actors_Movies",
-            joinColumns=@JoinColumn(name = "id_movie", referencedColumnName = "id"),
-            inverseJoinColumns=@JoinColumn(name = "id_actor", referencedColumnName = "id"))
+            joinColumns = @JoinColumn(name = "id_movie", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_actor", referencedColumnName = "id"))
     private List<Actor> actors;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_distributor")
     private Distributor distributor;
 
-    @ManyToMany (fetch = FetchType.LAZY)
-    @JoinTable(name = "Awards_Movies", joinColumns=@JoinColumn(name = "id_movie", referencedColumnName = "id"),
-            inverseJoinColumns=@JoinColumn(name = "id_award",referencedColumnName = "id"))
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "Awards_Movies", joinColumns = @JoinColumn(name = "id_movie", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "id_award", referencedColumnName = "id"))
     private List<Award> awards;
 
     @ManyToOne(fetch = FetchType.LAZY)

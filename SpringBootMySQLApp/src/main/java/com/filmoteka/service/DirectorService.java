@@ -32,7 +32,7 @@ public class DirectorService {
         }
     }
 
-    public com.filmoteka.sdo.Director createDirector (com.filmoteka.sdo.Director director) {
+    public com.filmoteka.sdo.Director createDirector(com.filmoteka.sdo.Director director) {
         Director director1 = new Director();
         director1.setFirstName(director.getFirstName());
         director1.setLastName(director.getLastName());

@@ -16,18 +16,18 @@ import java.util.List;
 @Entity
 @Table(name = "actor")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Actor implements Serializable{
+public class Actor implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Size(min=2, max=20)
+    @Size(min = 2, max = 20)
     private String firstName;
 
     @NotBlank
-    @Size(min=2, max=20)
+    @Size(min = 2, max = 20)
     private String lastName;
 
     @ManyToMany(mappedBy = "actors")

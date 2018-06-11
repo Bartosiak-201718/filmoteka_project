@@ -10,12 +10,12 @@ public class Award {
         this.name = name;
     }
 
-    public Award(com.filmoteka.dao.Award award){
+    public Award(com.filmoteka.dao.Award award) {
         this.name = award.getName();
         this.id = award.getId();
     }
 
-    public Award(){
+    public Award() {
 
     }
 

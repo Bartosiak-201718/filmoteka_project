@@ -11,13 +11,13 @@ public class Director {
         this.lastName = lastName;
     }
 
-    public Director(com.filmoteka.dao.Director director){
+    public Director(com.filmoteka.dao.Director director) {
         this.firstName = director.getFirstName();
         this.lastName = director.getLastName();
         this.id = director.getId();
     }
 
-    public Director(){
+    public Director() {
 
     }
 

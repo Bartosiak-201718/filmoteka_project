@@ -19,21 +19,20 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-    public User getById(Long id){
+    public User getById(Long id) {
         return userRepository.getOne(id);
     }
 
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         try {
             userRepository.deleteById(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             logger.warn("IllegalArgumentException in application");
         }
     }
 
-    public com.filmoteka.sdo.User createUser (com.filmoteka.sdo.User user){
+    public com.filmoteka.sdo.User createUser(com.filmoteka.sdo.User user) {
         User u = new User();
         u.setCity(user.getCity());
         u.setLogin(user.getLogin());
@@ -44,10 +43,10 @@ public class UserService {
         return saved;
     }
 
-    public com.filmoteka.sdo.User updateUser (com.filmoteka.sdo.User user, Long id) throws IncorrectIdException {
+    public com.filmoteka.sdo.User updateUser(com.filmoteka.sdo.User user, Long id) throws IncorrectIdException {
 
         User user1 = new User();
-        if(!user.getId().equals(id)) {
+        if (!user.getId().equals(id)) {
             throw new IncorrectIdException("Wrong id!");
         }
         user1 = userRepository.getOne(id);
@@ -60,9 +59,9 @@ public class UserService {
         return saved;
     }
 
-    public List<com.filmoteka.sdo.User> getAllUsers(){
-        List<com.filmoteka.sdo.User>userList= new ArrayList<>();
-        for (User userDao:userRepository.findAll()) {
+    public List<com.filmoteka.sdo.User> getAllUsers() {
+        List<com.filmoteka.sdo.User> userList = new ArrayList<>();
+        for (User userDao : userRepository.findAll()) {
             com.filmoteka.sdo.User user = new com.filmoteka.sdo.User(userDao);
             userList.add(user);
         }

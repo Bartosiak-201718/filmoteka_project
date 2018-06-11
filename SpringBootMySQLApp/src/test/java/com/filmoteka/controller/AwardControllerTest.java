@@ -13,7 +13,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
-import static io.restassured.RestAssured. *;
+import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.*;
 import static org.hamcrest.Matchers.*;
 
@@ -40,26 +40,26 @@ public class AwardControllerTest {
         Award award = new Award();
         award.setName("MTV Music Award 2016");
 
-        given().body (award)
+        given().body(award)
                 .when()
                 .contentType(ContentType.JSON)
                 .post("/api/awards");
 
         get("/api/awards/4").then().statusCode(200).assertThat()
-                .body("name",equalTo("MTV Music Award 2016"))
-                .body("id",equalTo(4));
+                .body("name", equalTo("MTV Music Award 2016"))
+                .body("id", equalTo(4));
     }
 
     @Test
     public void updateAward() {
         Award award = new Award();
         award.setId((long) 2);
-        award.setName ("Gotham Awards");
+        award.setName("Gotham Awards");
 
-        given().body (award)
-                .when ()
-                .contentType (ContentType.JSON)
-                .put ("/api/awards/2");
+        given().body(award)
+                .when()
+                .contentType(ContentType.JSON)
+                .put("/api/awards/2");
 
         get("/api/awards/2").then().statusCode(200).assertThat()
                 .body("name", equalTo("Gotham Awards"))

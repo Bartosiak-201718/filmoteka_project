@@ -19,21 +19,20 @@ public class DistributorService {
     @Autowired
     DistributorRepository distributorRepository;
 
-    public Distributor getById(Long id){
+    public Distributor getById(Long id) {
         return distributorRepository.getOne(id);
     }
 
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         try {
             distributorRepository.deleteById(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             logger.warn("IllegalArgumentException in application");
         }
     }
 
-    public com.filmoteka.sdo.Distributor createDistributor (com.filmoteka.sdo.Distributor distributor){
+    public com.filmoteka.sdo.Distributor createDistributor(com.filmoteka.sdo.Distributor distributor) {
         Distributor d = new Distributor();
         d.setName(distributor.getName());
 
@@ -43,10 +42,10 @@ public class DistributorService {
     }
 
 
-    public com.filmoteka.sdo.Distributor updateDistributor (com.filmoteka.sdo.Distributor distributor, Long id) throws IncorrectIdException {
+    public com.filmoteka.sdo.Distributor updateDistributor(com.filmoteka.sdo.Distributor distributor, Long id) throws IncorrectIdException {
 
         Distributor distributor1 = new Distributor();
-        if(!distributor.getId().equals(id)) {
+        if (!distributor.getId().equals(id)) {
             throw new IncorrectIdException("Wrong id!");
         }
         distributor1 = distributorRepository.getOne(id);
@@ -56,9 +55,9 @@ public class DistributorService {
         return saved;
     }
 
-    public List<com.filmoteka.sdo.Distributor> getAllDistributors(){
-        List<com.filmoteka.sdo.Distributor>distributorList=new ArrayList<>();
-        for (Distributor distributorDao: distributorRepository.findAll()) {
+    public List<com.filmoteka.sdo.Distributor> getAllDistributors() {
+        List<com.filmoteka.sdo.Distributor> distributorList = new ArrayList<>();
+        for (Distributor distributorDao : distributorRepository.findAll()) {
             com.filmoteka.sdo.Distributor distributor = new com.filmoteka.sdo.Distributor(distributorDao);
             distributorList.add(distributor);
         }

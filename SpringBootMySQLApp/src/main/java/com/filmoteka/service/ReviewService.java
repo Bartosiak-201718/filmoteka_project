@@ -19,21 +19,20 @@ public class ReviewService {
     @Autowired
     ReviewRepository reviewRepository;
 
-    public Review getById(Long id){
+    public Review getById(Long id) {
         return reviewRepository.getOne(id);
     }
 
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         try {
             reviewRepository.deleteById(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             logger.warn("IllegalArgumentException in application");
         }
     }
 
-    public com.filmoteka.sdo.Review createReview (com.filmoteka.sdo.Review review){
+    public com.filmoteka.sdo.Review createReview(com.filmoteka.sdo.Review review) {
         Review r = new Review();
         r.setUserReview(review.getUserReview());
         r = reviewRepository.save(r);
@@ -41,10 +40,10 @@ public class ReviewService {
         return saved;
     }
 
-    public com.filmoteka.sdo.Review updateReview (com.filmoteka.sdo.Review review, Long id) throws IncorrectIdException {
+    public com.filmoteka.sdo.Review updateReview(com.filmoteka.sdo.Review review, Long id) throws IncorrectIdException {
 
         Review review1 = new Review();
-        if(!review.getId().equals(id)) {
+        if (!review.getId().equals(id)) {
             throw new IncorrectIdException("Wrong id!");
         }
         review1 = reviewRepository.getOne(id);
@@ -54,9 +53,9 @@ public class ReviewService {
         return saved;
     }
 
-    public List<com.filmoteka.sdo.Review> getAllReviews(){
-        List<com.filmoteka.sdo.Review>reviewList= new ArrayList<>();
-        for (Review reviewDao: reviewRepository.findAll()) {
+    public List<com.filmoteka.sdo.Review> getAllReviews() {
+        List<com.filmoteka.sdo.Review> reviewList = new ArrayList<>();
+        for (Review reviewDao : reviewRepository.findAll()) {
             com.filmoteka.sdo.Review review = new com.filmoteka.sdo.Review(reviewDao);
             reviewList.add(review);
         }

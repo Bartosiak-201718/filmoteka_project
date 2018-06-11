@@ -21,20 +21,19 @@ public class AwardService {
     @Autowired
     AwardRepository awardRepository;
 
-    public Award getById(Long id){
+    public Award getById(Long id) {
         return awardRepository.getOne(id);
     }
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         try {
             awardRepository.deleteById(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             logger.warn("IllegalArgumentException in application");
         }
     }
 
-    public com.filmoteka.sdo.Award createAward (com.filmoteka.sdo.Award award){
+    public com.filmoteka.sdo.Award createAward(com.filmoteka.sdo.Award award) {
         Award a = new Award();
         a.setName(award.getName());
         a = awardRepository.save(a);
@@ -43,10 +42,10 @@ public class AwardService {
     }
 
 
-    public com.filmoteka.sdo.Award updateAward (com.filmoteka.sdo.Award award, Long id) throws IncorrectIdException {
+    public com.filmoteka.sdo.Award updateAward(com.filmoteka.sdo.Award award, Long id) throws IncorrectIdException {
 
         Award award1 = new Award();
-        if(!award.getId().equals(id)) {
+        if (!award.getId().equals(id)) {
             throw new IncorrectIdException("Wrong id!");
         }
         award1 = awardRepository.getOne(id);
@@ -56,9 +55,9 @@ public class AwardService {
         return saved;
     }
 
-    public List<com.filmoteka.sdo.Award> getAllAwards(){
-        List<com.filmoteka.sdo.Award>awardList=new ArrayList<com.filmoteka.sdo.Award>();
-        for (Award awardDao:awardRepository.findAll()) {
+    public List<com.filmoteka.sdo.Award> getAllAwards() {
+        List<com.filmoteka.sdo.Award> awardList = new ArrayList<com.filmoteka.sdo.Award>();
+        for (Award awardDao : awardRepository.findAll()) {
             com.filmoteka.sdo.Award award = new com.filmoteka.sdo.Award(awardDao);
             awardList.add(award);
         }

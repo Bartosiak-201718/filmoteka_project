@@ -16,17 +16,17 @@ import java.util.List;
 @Entity
 @Table(name = "award")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-public class Award implements Serializable{
+public class Award implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
-    @Size(min=2, max=30)
+    @Size(min = 2, max = 30)
     private String name;
 
-    @ManyToMany(cascade=CascadeType.ALL,mappedBy = "awards")
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "awards")
     private List<Movie> movies = new ArrayList<>();
 
     public Long getId() {

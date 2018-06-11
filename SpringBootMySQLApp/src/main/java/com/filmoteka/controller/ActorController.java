@@ -18,40 +18,43 @@ import java.util.List;
 public class ActorController {
     @Autowired
     ActorService actorService;
-    @RequestMapping(value = "/actors/{id}" , method = RequestMethod.GET)
-    ResponseEntity<Actor> getActor(@PathVariable("id") Long id){
-        try{
+
+    @RequestMapping(value = "/actors/{id}", method = RequestMethod.GET)
+    ResponseEntity<Actor> getActor(@PathVariable("id") Long id) {
+        try {
             Actor actor = new Actor(actorService.getById(id));
-            return new ResponseEntity<Actor>(actor,HttpStatus.OK);
-        }catch (EntityNotFoundException e){
+            return new ResponseEntity<Actor>(actor, HttpStatus.OK);
+        } catch (EntityNotFoundException e) {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
-    @RequestMapping(value = "/actors/{id}" , method = RequestMethod.DELETE)
-    public void deleteActor(@PathVariable("id") Long id){
+
+    @RequestMapping(value = "/actors/{id}", method = RequestMethod.DELETE)
+    public void deleteActor(@PathVariable("id") Long id) {
         actorService.deleteById(id);
     }
+
     @RequestMapping(value = "/actors", method = RequestMethod.POST)
-    public ResponseEntity <Actor> createActor (@RequestBody Actor actor){
+    public ResponseEntity<Actor> createActor(@RequestBody Actor actor) {
         try {
             Actor newActor = actorService.createActor(actor);
             return new ResponseEntity<Actor>(newActor, HttpStatus.OK);
-        }
-        catch (Exception c){
+        } catch (Exception c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @RequestMapping(value ="/actors/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<Actor> updateActor (@PathVariable("id") Long id, @RequestBody Actor actor){
-        try{
-            Actor actor1 = actorService.updateActor(actor,id);
-            return new ResponseEntity<Actor>(actor1,HttpStatus.OK);
-        }
-        catch (Exception c){
+
+    @RequestMapping(value = "/actors/{id}", method = RequestMethod.PUT)
+    public ResponseEntity<Actor> updateActor(@PathVariable("id") Long id, @RequestBody Actor actor) {
+        try {
+            Actor actor1 = actorService.updateActor(actor, id);
+            return new ResponseEntity<Actor>(actor1, HttpStatus.OK);
+        } catch (Exception c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-    @RequestMapping(value="/actors", method=RequestMethod.GET)
+
+    @RequestMapping(value = "/actors", method = RequestMethod.GET)
     public List<Actor> getAllActors() {
         return actorService.getAllActors();
     }

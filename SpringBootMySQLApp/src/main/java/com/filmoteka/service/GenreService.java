@@ -20,21 +20,20 @@ public class GenreService {
     @Autowired
     GenreRepository genreRepository;
 
-    public Genre getById(Long id){
+    public Genre getById(Long id) {
         return genreRepository.getOne(id);
     }
 
 
-    public void deleteById(Long id){
+    public void deleteById(Long id) {
         try {
             genreRepository.deleteById(id);
-        }
-        catch(Exception e){
+        } catch (Exception e) {
             logger.warn("IllegalArgumentException in application");
         }
     }
 
-    public com.filmoteka.sdo.Genre createGenre (com.filmoteka.sdo.Genre genre){
+    public com.filmoteka.sdo.Genre createGenre(com.filmoteka.sdo.Genre genre) {
         Genre g = new Genre();
         g.setName(genre.getName());
         g = genreRepository.save(g);
@@ -42,10 +41,10 @@ public class GenreService {
         return saved;
     }
 
-    public com.filmoteka.sdo.Genre updateGenre (com.filmoteka.sdo.Genre genre, Long id) throws IncorrectIdException {
+    public com.filmoteka.sdo.Genre updateGenre(com.filmoteka.sdo.Genre genre, Long id) throws IncorrectIdException {
 
         Genre genre1 = new Genre();
-        if(!genre.getId().equals(id)) {
+        if (!genre.getId().equals(id)) {
             throw new IncorrectIdException("Wrong id!");
         }
         genre1 = genreRepository.getOne(id);
@@ -55,9 +54,9 @@ public class GenreService {
         return saved;
     }
 
-    public List<com.filmoteka.sdo.Genre> getAllGenres(){
-        List<com.filmoteka.sdo.Genre>genreList= new ArrayList<>();
-        for (Genre genreDao: genreRepository.findAll()) {
+    public List<com.filmoteka.sdo.Genre> getAllGenres() {
+        List<com.filmoteka.sdo.Genre> genreList = new ArrayList<>();
+        for (Genre genreDao : genreRepository.findAll()) {
             com.filmoteka.sdo.Genre genre = new com.filmoteka.sdo.Genre(genreDao);
             genreList.add(genre);
         }

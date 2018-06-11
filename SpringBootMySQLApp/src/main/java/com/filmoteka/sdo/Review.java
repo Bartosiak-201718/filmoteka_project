@@ -10,12 +10,12 @@ public class Review {
         this.userReview = userReview;
     }
 
-    public Review(com.filmoteka.dao.Review review){
+    public Review(com.filmoteka.dao.Review review) {
         this.userReview = review.getUserReview();
         this.id = review.getId();
     }
 
-    public Review(){
+    public Review() {
 
     }
 
@@ -60,9 +60,9 @@ public class Review {
     }
 
     public Review(Long id, String userReview, Movie movie, User user) {
-            this.id = id;
-            this.userReview = userReview;
-            this.movie = movie;
-            this.user = user;
+        this.id = id;
+        this.userReview = userReview;
+        this.movie = movie;
+        this.user = user;
     }
 }

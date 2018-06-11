@@ -8,13 +8,13 @@ public class Actor {
         this.lastName = lastName;
     }
 
-    public Actor(com.filmoteka.dao.Actor actor){
+    public Actor(com.filmoteka.dao.Actor actor) {
         this.firstName = actor.getFirstName();
         this.lastName = actor.getLastName();
         this.id = actor.getId();
     }
 
-    public Actor(){
+    public Actor() {
 
     }
 

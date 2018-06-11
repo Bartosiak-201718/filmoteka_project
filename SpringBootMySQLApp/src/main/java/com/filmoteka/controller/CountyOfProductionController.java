@@ -14,11 +14,12 @@ import java.util.List;
 @RequestMapping("/api")
 
 public class CountyOfProductionController {
-	
+
     @Autowired
     CountryOfProductionService countryOfProductionService;
+
     @RequestMapping(value = "/country/{id}", method = RequestMethod.GET)
-    ResponseEntity<CountryOfProduction> getCountryofProduction (@PathVariable("id") Long id) {
+    ResponseEntity<CountryOfProduction> getCountryofProduction(@PathVariable("id") Long id) {
         try {
             CountryOfProduction countryOfProduction = new CountryOfProduction(countryOfProductionService.getById(id));
             return new ResponseEntity<CountryOfProduction>(countryOfProduction, HttpStatus.OK);
@@ -26,10 +27,12 @@ public class CountyOfProductionController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
+
     @RequestMapping(value = "/country/{id}", method = RequestMethod.DELETE)
     public void deleteCountryOfProduction(@PathVariable("id") Long id) {
         countryOfProductionService.deleteById(id);
     }
+
     @RequestMapping(value = "/country", method = RequestMethod.POST)
     public ResponseEntity<CountryOfProduction> createCountryOfProduction(@RequestBody CountryOfProduction countryOfProduction) {
         try {
@@ -39,8 +42,9 @@ public class CountyOfProductionController {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @RequestMapping(value = "/country/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<CountryOfProduction> updateCountryOfProduction (@PathVariable("id") Long id, @RequestBody CountryOfProduction countryOfProduction) {
+    public ResponseEntity<CountryOfProduction> updateCountryOfProduction(@PathVariable("id") Long id, @RequestBody CountryOfProduction countryOfProduction) {
         try {
             CountryOfProduction countryOfProduction1 = countryOfProductionService.updateCountryOfProduction(countryOfProduction, id);
             return new ResponseEntity<CountryOfProduction>(countryOfProduction1, HttpStatus.OK);
@@ -48,6 +52,7 @@ public class CountyOfProductionController {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @RequestMapping(value = "/country", method = RequestMethod.GET)
     public List<CountryOfProduction> getAllCountriesOfProduction() {
         return countryOfProductionService.getAllCountryOfProductions();

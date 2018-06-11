@@ -19,8 +19,9 @@ public class AwardController {
 
     @Autowired
     AwardService awardService;
+
     @RequestMapping(value = "/awards/{id}", method = RequestMethod.GET)
-    ResponseEntity<Award> getAward (@PathVariable("id") Long id) {
+    ResponseEntity<Award> getAward(@PathVariable("id") Long id) {
         try {
             Award award = new Award(awardService.getById(id));
             return new ResponseEntity<Award>(award, HttpStatus.OK);
@@ -28,6 +29,7 @@ public class AwardController {
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
+
     @RequestMapping(value = "/awards/{id}", method = RequestMethod.DELETE)
     public void deleteAward(@PathVariable("id") Long id) {
         awardService.deleteById(id);
@@ -42,6 +44,7 @@ public class AwardController {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @RequestMapping(value = "/awards/{id}", method = RequestMethod.PUT)
     public ResponseEntity<Award> updateAward(@PathVariable("id") Long id, @RequestBody Award award) {
         try {
@@ -51,6 +54,7 @@ public class AwardController {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
+
     @RequestMapping(value = "/awards", method = RequestMethod.GET)
     public List<Award> getAllAwards() {
         return awardService.getAllAwards();

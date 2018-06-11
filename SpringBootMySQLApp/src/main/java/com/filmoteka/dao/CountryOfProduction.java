@@ -19,7 +19,7 @@ public class CountryOfProduction implements Serializable {
     private Long id;
 
     @NotBlank
-    @Size(min =2, max=30)
+    @Size(min = 2, max = 30)
     private String name;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)

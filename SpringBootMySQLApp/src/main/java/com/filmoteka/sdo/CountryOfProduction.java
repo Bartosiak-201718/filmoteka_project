@@ -10,12 +10,12 @@ public class CountryOfProduction {
         this.name = name;
     }
 
-    public CountryOfProduction(com.filmoteka.dao.CountryOfProduction country){
+    public CountryOfProduction(com.filmoteka.dao.CountryOfProduction country) {
         this.name = country.getName();
         this.id = country.getId();
     }
 
-    public CountryOfProduction(){
+    public CountryOfProduction() {
 
     }
 

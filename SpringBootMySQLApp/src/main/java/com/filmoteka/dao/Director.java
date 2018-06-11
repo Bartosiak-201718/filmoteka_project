@@ -18,11 +18,11 @@ public class Director implements Serializable {
     private Long id;
 
     @NotBlank
-    @Size(min=2, max=20)
+    @Size(min = 2, max = 20)
     private String firstName;
 
     @NotBlank
-    @Size(min=2, max=20)
+    @Size(min = 2, max = 20)
     private String lastName;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
