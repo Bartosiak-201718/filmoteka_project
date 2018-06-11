@@ -4,6 +4,7 @@ import com.filmoteka.dao.*;
 import com.filmoteka.dao.CountryOfProduction;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -29,6 +30,46 @@ public class Movie {
         this.descriptionOfMovie = movie.getDescriptionOfMovie();
         this.duration = movie.getDuration();
         this.id = movie.getId();
+
+        Director director = new Director();
+        director.setFirstName(movie.getDirector().getFirstName());
+        director.setLastName(movie.getDirector().getLastName());
+        director.setId(movie.getDirector().getId());
+        this.director = director;
+
+        Distributor distributor = new Distributor();
+        distributor.setId(movie.getDistributor().getId());
+        distributor.setName(movie.getDistributor().getName());
+        this.distributor = distributor;
+
+        CountryOfProduction countryOfProduction = new CountryOfProduction();
+        countryOfProduction.setId(movie.getCountryOfProduction().getId());
+        countryOfProduction.setName(movie.getCountryOfProduction().getName());
+        this.countryOfProduction = countryOfProduction;
+
+        Genre genre = new Genre();
+        genre.setId(movie.getGenre().getId());
+        genre.setName(movie.getGenre().getName());
+        this.genre = genre;
+
+        List<Actor> actorList = new ArrayList<>();
+        for(int i = 0; i < movie.getActors().size(); i++){
+            Actor actor = new Actor();
+            actor.setFirstName(movie.getActors().get(i).getFirstName());
+            actor.setId(movie.getActors().get(i).getId());
+            actor.setLastName(movie.getActors().get(i).getLastName());
+            actorList.add(actor);
+        }
+        this.actorList = actorList;
+
+        List<Award> awardList = new ArrayList<>();
+        for(int i = 0; i < movie.getAwards().size(); i++){
+            Award award = new Award();
+            award.setName(movie.getAwards().get(i).getName());
+            award.setId(movie.getAwards().get(i).getId());
+            awardList.add(award);
+        }
+        this.awardList = awardList;
 
     }
 
