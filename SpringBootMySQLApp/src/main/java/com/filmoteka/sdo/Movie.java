@@ -1,7 +1,5 @@
 package com.filmoteka.sdo;
 
-import com.filmoteka.dao.*;
-import com.filmoteka.dao.CountryOfProduction;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
