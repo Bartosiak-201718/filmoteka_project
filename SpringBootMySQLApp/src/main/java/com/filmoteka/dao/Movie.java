@@ -3,6 +3,7 @@ package com.filmoteka.dao;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -17,7 +18,7 @@ import java.util.List;
 public class Movie implements Serializable {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotBlank
