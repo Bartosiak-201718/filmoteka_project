@@ -8,6 +8,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.*;
 
 public class DirectorControllerTest {
@@ -40,10 +41,10 @@ public class DirectorControllerTest {
                 .contentType(ContentType.JSON)
                 .post("/api/directors");
 
-        get("/api/directors/4").then().statusCode(200).assertThat()
+        get("/api/directors/5").then().statusCode(200).assertThat()
                 .body("firstName", equalTo("Ann"))
                 .body("lastName", equalTo("Max"))
-                .body("id", equalTo(4));
+                .body("id", equalTo(5));
     }
 
     @Test
@@ -66,5 +67,13 @@ public class DirectorControllerTest {
 
     @Test
     public void getAllDirectors() {
+        given().
+                when().
+                get("/api/directors").
+                then().
+                assertThat().
+                 body("id", hasItems(1, 4))
+                .body("firstName", hasItems("Anna", "Errol"))
+                .body("lastName", hasItems("Nowa", "Morris"));
     }
 }

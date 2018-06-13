@@ -8,6 +8,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.*;
 
 public class GenreControllerTest {
@@ -38,9 +39,9 @@ public class GenreControllerTest {
                 .contentType(ContentType.JSON)
                 .post("/api/genres");
 
-        get("/api/genres/4").then().statusCode(200).assertThat()
+        get("/api/genres/5").then().statusCode(200).assertThat()
                 .body("name", equalTo("Comedy"))
-                .body("id", equalTo(4));
+                .body("id", equalTo(5));
     }
 
     @Test
@@ -62,5 +63,12 @@ public class GenreControllerTest {
 
     @Test
     public void getAllGenre() {
+        given().
+                when().
+                get("/api/genres").
+                then().
+                assertThat().
+                body("id", hasItems(1, 4))
+                .body("name", hasItems("drama", "fantasy"));
     }
 }

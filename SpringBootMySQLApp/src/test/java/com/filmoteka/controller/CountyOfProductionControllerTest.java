@@ -45,9 +45,9 @@ public class CountyOfProductionControllerTest {
                 .contentType(ContentType.JSON)
                 .post("/api/country");
 
-        get("/api/country/4").then().statusCode(200).assertThat()
+        get("/api/country/5").then().statusCode(200).assertThat()
                 .body("name", equalTo("Belgium"))
-                .body("id", equalTo(4));
+                .body("id", equalTo(5));
     }
 
     @Test
@@ -68,6 +68,12 @@ public class CountyOfProductionControllerTest {
 
     @Test
     public void getAllCountriesOfProduction() {
-
+        given().
+                when().
+                get("/api/country").
+                then().
+                assertThat().
+                 body("id", hasItems(1, 4))
+                .body("name", hasItems("Poland", "Spain"));
     }
 }
