@@ -1,5 +1,6 @@
 package com.filmoteka.controller;
 
+import com.filmoteka.Exceptions.IncorrectIdException;
 import com.filmoteka.sdo.Director;
 import com.filmoteka.service.DirectorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,7 @@ public class DirectorController {
         try {
             Director director1 = directorService.updateDirector(director, id);
             return new ResponseEntity<Director>(director1, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IncorrectIdException c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

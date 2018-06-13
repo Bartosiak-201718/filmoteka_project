@@ -1,6 +1,7 @@
 package com.filmoteka.controller;
 
 
+import com.filmoteka.Exceptions.IncorrectIdException;
 import com.filmoteka.sdo.Actor;
 import com.filmoteka.service.ActorService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,7 @@ public class ActorController {
         try {
             Actor actor1 = actorService.updateActor(actor, id);
             return new ResponseEntity<Actor>(actor1, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IncorrectIdException c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

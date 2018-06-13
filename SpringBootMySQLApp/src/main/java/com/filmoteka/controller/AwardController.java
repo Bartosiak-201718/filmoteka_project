@@ -1,8 +1,7 @@
 package com.filmoteka.controller;
 
-import com.filmoteka.sdo.Actor;
+import com.filmoteka.Exceptions.IncorrectIdException;
 import com.filmoteka.sdo.Award;
-import com.filmoteka.service.ActorService;
 import com.filmoteka.service.AwardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -50,7 +49,7 @@ public class AwardController {
         try {
             Award award1 = awardService.updateAward(award, id);
             return new ResponseEntity<Award>(award1, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IncorrectIdException e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
