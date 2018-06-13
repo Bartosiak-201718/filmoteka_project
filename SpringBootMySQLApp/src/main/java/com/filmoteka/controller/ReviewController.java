@@ -41,7 +41,7 @@ public class ReviewController {
         try {
             Review newReview = reviewService.createReview(review);
             return new ResponseEntity<Review>(newReview, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
           c.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }

@@ -40,7 +40,7 @@ public class UserController {
         try {
             User newUser = userService.createUser(user);
             return new ResponseEntity<User>(newUser, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

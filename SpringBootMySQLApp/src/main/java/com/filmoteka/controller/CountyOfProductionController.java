@@ -39,7 +39,7 @@ public class CountyOfProductionController {
         try {
             CountryOfProduction newCountry = countryOfProductionService.createCountryOfProduction(countryOfProduction);
             return new ResponseEntity<CountryOfProduction>(newCountry, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

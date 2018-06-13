@@ -40,7 +40,7 @@ public class ActorController {
         try {
             Actor newActor = actorService.createActor(actor);
             return new ResponseEntity<Actor>(newActor, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  e) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

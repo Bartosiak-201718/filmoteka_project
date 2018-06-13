@@ -38,7 +38,7 @@ public class DirectorController {
         try {
             Director newDirector = directorService.createDirector(director);
             return new ResponseEntity<Director>(newDirector, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

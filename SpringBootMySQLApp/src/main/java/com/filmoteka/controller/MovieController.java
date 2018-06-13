@@ -40,7 +40,7 @@ public class MovieController {
         try {
             Movie newMovie = movieService.createMovie(movie);
             return new ResponseEntity<Movie>(newMovie, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

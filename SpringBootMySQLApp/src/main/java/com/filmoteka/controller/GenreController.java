@@ -40,7 +40,7 @@ public class GenreController {
         try {
             Genre newGenre = genreService.createGenre(genre);
             return new ResponseEntity<Genre>(newGenre, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

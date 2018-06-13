@@ -41,7 +41,7 @@ public class DistributorController {
         try {
             Distributor newDistributor = distributorService.createDistributor(distributor);
             return new ResponseEntity<Distributor>(newDistributor, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

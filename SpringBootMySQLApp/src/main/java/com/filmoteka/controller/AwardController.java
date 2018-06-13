@@ -39,7 +39,7 @@ public class AwardController {
         try {
             Award newAward = awardService.createAward(award);
             return new ResponseEntity<Award>(newAward, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
