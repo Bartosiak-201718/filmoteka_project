@@ -1,5 +1,6 @@
 package com.filmoteka.controller;
 
+import com.filmoteka.Exceptions.IncorrectIdException;
 import com.filmoteka.sdo.User;
 import com.filmoteka.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class UserController {
         try {
             User newUser = userService.createUser(user);
             return new ResponseEntity<User>(newUser, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -49,7 +50,7 @@ public class UserController {
         try {
             User user1 = userService.updateUser(user, id);
             return new ResponseEntity<User>(user1, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IncorrectIdException c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

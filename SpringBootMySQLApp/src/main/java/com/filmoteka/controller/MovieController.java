@@ -1,5 +1,6 @@
 package com.filmoteka.controller;
 
+import com.filmoteka.Exceptions.IncorrectIdException;
 import com.filmoteka.sdo.Movie;
 import com.filmoteka.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +40,7 @@ public class MovieController {
         try {
             Movie newMovie = movieService.createMovie(movie);
             return new ResponseEntity<Movie>(newMovie, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -49,7 +50,7 @@ public class MovieController {
         try {
             Movie movie1 = movieService.updateMovie(movie, id);
             return new ResponseEntity<Movie>(movie1, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IncorrectIdException c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

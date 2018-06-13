@@ -1,5 +1,6 @@
 package com.filmoteka.controller;
 
+import com.filmoteka.Exceptions.IncorrectIdException;
 import com.filmoteka.sdo.Review;
 import com.filmoteka.service.ReviewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +41,7 @@ public class ReviewController {
         try {
             Review newReview = reviewService.createReview(review);
             return new ResponseEntity<Review>(newReview, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
           c.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -51,7 +52,7 @@ public class ReviewController {
         try {
             Review review1 = reviewService.updateReview(review, id);
             return new ResponseEntity<Review>(review1, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IncorrectIdException c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }

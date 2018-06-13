@@ -1,5 +1,6 @@
 package com.filmoteka.controller;
 
+import com.filmoteka.Exceptions.IncorrectIdException;
 import com.filmoteka.sdo.CountryOfProduction;
 import com.filmoteka.service.CountryOfProductionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +39,7 @@ public class CountyOfProductionController {
         try {
             CountryOfProduction newCountry = countryOfProductionService.createCountryOfProduction(countryOfProduction);
             return new ResponseEntity<CountryOfProduction>(newCountry, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IllegalArgumentException  c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
@@ -48,7 +49,7 @@ public class CountyOfProductionController {
         try {
             CountryOfProduction countryOfProduction1 = countryOfProductionService.updateCountryOfProduction(countryOfProduction, id);
             return new ResponseEntity<CountryOfProduction>(countryOfProduction1, HttpStatus.OK);
-        } catch (Exception c) {
+        } catch (IncorrectIdException c) {
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
