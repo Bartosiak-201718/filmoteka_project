@@ -175,6 +175,7 @@ public class Movie {
     }
 
 
+
     public Movie(Long id, String title, LocalDateTime releaseDate, String descriptionOfMovie, Integer duration, List<Actor> actorList, Distributor distributor, List<Award> awardList, Director director, CountryOfProduction countryOfProduction, Genre genre) {
         this.id = id;
         this.title = title;

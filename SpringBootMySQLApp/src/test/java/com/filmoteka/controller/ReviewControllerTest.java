@@ -8,6 +8,9 @@ import io.restassured.http.ContentType;
 import org.junit.Test;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
@@ -34,22 +37,19 @@ public class ReviewControllerTest {
 
     @Test
     public void createReview() {
-        Review review = new Review();
-        review.setId((long) 4);
-        review.setUserReview("Good good good very good very good");
-        User user = new User();
-        user.setCity("Barcelona");
-        user.setLogin("magicznykrzysz");
-        user.setPassword("megatajne123");
-        user.setUserName("Krzysztof Dam");
-        user.setId((long) 4);
-        review.setUser(user);
+         User user = new User();
+        user.setCity("Warsaw");
+        user.setLogin("admin");
+        user.setPassword("1234");
+        user.setUserName("Adam Nowak");
+        user.setId((long) 1);
+
         com.filmoteka.sdo.Movie movie = new com.filmoteka.sdo.Movie();
         movie.setId((long) 1);
 
         movie.setTitle(get("/api/movies/1").path("title"));
         String dt = get("/api/movies/1").path("releaseDate");
-        movie.setReleaseDate( LocalDateTime.parse(dt));
+        movie.setReleaseDate(LocalDateTime.parse(LocalDateTime.parse(dt).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME).toString()));
         movie.setDescriptionOfMovie(get("/api/movies/1").path("descriptionOfMovie"));
         movie.setDuration(get("/api/movies/1").path("duration"));
 
@@ -63,7 +63,6 @@ public class ReviewControllerTest {
         genre.setName(get("/api/genres/1").path("name"));
         movie.setGenre(genre);
 
-
         Distributor distributor = new Distributor();
         distributor.setId((long) 1);
         distributor.setName(get("/api/distributors/11").path("name"));
@@ -74,14 +73,13 @@ public class ReviewControllerTest {
         director.setFirstName(get("/api/directors/1").path("firstName"));
         director.setLastName(get("/api/directors/1").path("lastName"));
         movie.setDirector(director);
-
         movie.setAwardList(get("/api/movies/1").path("awardList"));
         movie.setActorList(get("/api/movies/1").path("actorList"));
 
+        Review review = new Review();
+        review.setUserReview("Good good good very good very good");
         review.setMovie(movie);
-
-//        review.setUser(new User(new UserService().getById((long) 1)));
-//        review.setMovie(new com.filmoteka.sdo.Movie(new MovieService().getById((long)1)));
+        review.setUser(user);
 
         given().body(review)
                 .when()
@@ -90,9 +88,7 @@ public class ReviewControllerTest {
 
         get("/api/reviews/4").then().statusCode(200).assertThat()
                 .body("id",equalTo(4))
-                .body("userReview",equalTo("Good good good very good very good"))
-                .body("movie",equalTo(movie))
-                .body("user",equalTo(user));
+                .body("userReview",equalTo("Good good good very good very good"));
     }
 
     @Test

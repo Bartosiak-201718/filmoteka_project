@@ -25,6 +25,7 @@ public class ReviewController {
             Review review = new Review(reviewService.getById(id));
             return new ResponseEntity<Review>(review, HttpStatus.OK);
         } catch (EntityNotFoundException e) {
+            e.printStackTrace();
             return new ResponseEntity(HttpStatus.NOT_FOUND);
         }
     }
@@ -40,6 +41,7 @@ public class ReviewController {
             Review newReview = reviewService.createReview(review);
             return new ResponseEntity<Review>(newReview, HttpStatus.OK);
         } catch (Exception c) {
+          c.printStackTrace();
             return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
