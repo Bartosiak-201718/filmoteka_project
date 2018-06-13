@@ -7,6 +7,7 @@ import org.junit.Test;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
 import static org.junit.Assert.*;
 
 public class UserControllerTest {
@@ -72,7 +73,13 @@ public class UserControllerTest {
 
     @Test
     public void getAllUsers() {
-
-
+        given().
+                when().
+                get("/api/users").
+                then().
+                assertThat().
+                body("id", hasItems(1, 3))
+                .body("login", hasItems("admin", "miska"))
+                .body("password", hasItems("1234", "nowehaslo45"));
     }
 }

@@ -12,6 +12,7 @@ import java.util.List;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
+import static org.hamcrest.Matchers.hasItems;
 
 
 public class MovieControllerTest {
@@ -85,8 +86,8 @@ public class MovieControllerTest {
                 .contentType(ContentType.JSON)
                 .post("/api/movies");
 
-        get("/api/movies/4").then().statusCode(200).assertThat()
-                .body("id",equalTo(4))
+        get("/api/movies/5").then().statusCode(200).assertThat()
+                .body("id",equalTo(5))
                 .body("title",equalTo("Shape of Water"))
                 .body("duration", equalTo(119))
                 .body("descriptionOfMovie", equalTo("At a top secret research facility in the 1960s, a lonely janitor forms a unique relationship with an amphibious creature that is being held in captivity."))
@@ -143,6 +144,14 @@ public class MovieControllerTest {
 
     @Test
     public void getAllMovies() {
+        given().
+                when().
+                get("/api/movies").
+                then().
+                assertThat().
+                body("id", hasItems(2,4))
+                .body("title", hasItems("Titanic","Tomb Raider"))
+                .body("duration", hasItems(145,180));
     }
 
     public void fillMovieData(Movie movie,String title, String dt,String description, int duration,
