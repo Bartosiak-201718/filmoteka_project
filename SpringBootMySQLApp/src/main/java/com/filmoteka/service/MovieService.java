@@ -1,6 +1,8 @@
 package com.filmoteka.service;
 
 import com.filmoteka.Exceptions.IncorrectIdException;
+import com.filmoteka.dao.Award;
+import com.filmoteka.dao.Distributor;
 import com.filmoteka.dao.Movie;
 import com.filmoteka.repository.MovieRepository;
 import com.filmoteka.sdo.Genre;
@@ -39,6 +41,40 @@ public class MovieService {
         m.setDescriptionOfMovie(movie.getDescriptionOfMovie());
         m.setDuration(movie.getDuration());
         m.setReleaseDate(movie.getReleaseDate());
+
+        Distributor distributor = new Distributor();
+        distributor.setName(movie.getDistributor().getName());
+        distributor.setId(movie.getDistributor().getId());
+        m.setDistributor(distributor);
+
+        com.filmoteka.dao.CountryOfProduction countryOfProduction = new com.filmoteka.dao.CountryOfProduction();
+        countryOfProduction.setId(movie.getCountryOfProduction().getId());
+        countryOfProduction.setName(movie.getCountryOfProduction().getName());
+        m.setCountryOfProduction(countryOfProduction);
+
+        com.filmoteka.dao.Genre genre = new com.filmoteka.dao.Genre();
+        genre.setId(movie.getGenre().getId());
+        genre.setName(movie.getGenre().getName());
+        m.setGenre(genre);
+
+        com.filmoteka.dao.Director director = new com.filmoteka.dao.Director();
+        director.setId(movie.getDirector().getId());
+        director.setFirstName(movie.getDirector().getFirstName());
+        director.setLastName(movie.getDirector().getLastName());
+        m.setDirector(director);
+
+        com.filmoteka.dao.Actor actor1 = new com.filmoteka.dao.Actor();
+        actor1.setId(movie.getActorList().get(0).getId());
+        actor1.setFirstName(movie.getActorList().get(0).getFirstName());
+        actor1.setLastName(movie.getActorList().get(0).getLastName());
+        List<com.filmoteka.dao.Actor> actors = new ArrayList<>();
+        actors.add(actor1);
+        m.setActors(actors);
+        Award award = new Award();
+        award.setId(movie.getAwardList().get(0).getId());
+        award.setName(movie.getAwardList().get(0).getName());
+        List<Award> awards = new ArrayList<>();
+        m.setAwards(awards);
 
         m = movieRepository.save(m);
         com.filmoteka.sdo.Movie saved = new com.filmoteka.sdo.Movie(m);

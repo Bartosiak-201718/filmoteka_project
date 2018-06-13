@@ -41,7 +41,7 @@ public class Movie implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_actor", referencedColumnName = "id"))
     private List<Actor> actors;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     @JoinColumn(name = "id_distributor")
     private Distributor distributor;
 
@@ -50,11 +50,11 @@ public class Movie implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "id_award", referencedColumnName = "id"))
     private List<Award> awards;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_director")
     private Director director;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.LAZY)
     @JoinColumn(name = "id_countryOfProduction")
     private CountryOfProduction countryOfProduction;
 
@@ -114,7 +114,7 @@ public class Movie implements Serializable {
         this.reviews = reviews;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     @JoinColumn(name = "id_genre")
     private Genre genre;
 
