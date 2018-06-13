@@ -26,7 +26,7 @@ public class Award implements Serializable {
     @Size(min = 2, max = 30)
     private String name;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "awards")
+    @ManyToMany(cascade = CascadeType.MERGE, mappedBy = "awards")
     private List<Movie> movies = new ArrayList<>();
 
     public Long getId() {

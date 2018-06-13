@@ -25,7 +25,7 @@ public class UserControllerTest {
     public void deleteUser() {
         given()
                 .when()
-                .delete("/api/users/3")
+                .delete("/api/users/2")
                 .then()
                 .statusCode(200);
     }

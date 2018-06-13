@@ -118,7 +118,7 @@ public class Movie implements Serializable {
     @JoinColumn(name = "id_genre")
     private Genre genre;
 
-    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.LAZY, orphanRemoval = false)
     @JoinColumn(name = "id_movie")
     private List<Review> reviews;
 

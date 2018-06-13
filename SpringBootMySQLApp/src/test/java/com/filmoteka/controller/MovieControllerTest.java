@@ -29,7 +29,7 @@ public class MovieControllerTest {
     public void deleteMovie() {
         given()
                 .when()
-                .delete("/api/movies/3") //tu się cuda dzieją bo usuwa też 1
+                .delete("/api/movies/3")
                 .then()
                 .statusCode(200);
     }

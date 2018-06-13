@@ -36,7 +36,7 @@ public class User implements Serializable {
     @Size(min = 4, max = 30)
     private String city;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, orphanRemoval = false)
     @JoinColumn(name = "id_user")
     private List<Review> reviews = new ArrayList<>();
 

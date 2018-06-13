@@ -22,7 +22,7 @@ public class Genre implements Serializable {
     @Size(min = 2, max = 20)
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, orphanRemoval = false)
     @JoinColumn(name = "id_genre")
     private List<Movie> movies = new ArrayList<>();
 

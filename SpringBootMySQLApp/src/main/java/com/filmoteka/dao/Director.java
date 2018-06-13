@@ -25,7 +25,7 @@ public class Director implements Serializable {
     @Size(min = 2, max = 20)
     private String lastName;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.LAZY, orphanRemoval = false)
     @JoinColumn(name = "id_director")
     private List<Movie> movies = new ArrayList<>();
 
