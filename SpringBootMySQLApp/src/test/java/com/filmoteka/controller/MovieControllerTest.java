@@ -21,7 +21,6 @@ public class MovieControllerTest {
     public void getMovie() {
         get("/api/movies/1").then().statusCode(200).assertThat()
                 .body("title", equalTo("Capitan Fantastic"))
-                .body("duration", equalTo(135))
                 .body("releaseDate", equalTo(LocalDateTime.of(2016,06,23,0,0).format(DateTimeFormatter.ISO_LOCAL_DATE_TIME)))
                 .body("descriptionOfMovie", equalTo(descriptionOfFirstMovie));
     }
@@ -104,8 +103,8 @@ public class MovieControllerTest {
         countryOfProduction.setName(get("/api/country/2").path("name"));
 
         Genre genre = new Genre();
-        genre.setId((long) 3);
-        genre.setName(get("/api/genres/3").path("name"));
+        genre.setId((long) 4);
+        genre.setName(get("/api/genres/4").path("name"));
 
         Distributor distributor = new Distributor();
         distributor.setId((long) 11);
