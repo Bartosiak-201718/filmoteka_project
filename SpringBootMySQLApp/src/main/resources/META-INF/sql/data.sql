@@ -21,7 +21,7 @@ INSERT INTO genre (id,name) VALUES (2,'war film');
 INSERT INTO genre (id,name) VALUES (3,'animation');
 INSERT INTO genre (id,name) VALUES (4,'fantasy');
 INSERT INTO review (id,user_review,id_movie,id_user) VALUES (1,'This is really a movie for upper-middle class hipsters who once fancied themselves firebrands and status quo-challengers in college, but now consider only buying organic food at Whole Foods and not vaccinating their kids to be radical acts.',1,2);
-INSERT INTO review (id,user_review,id_movie,id_user) VALUES (2,'It''s a rare movie that asks such big questions - about parenting, about family, about modern-day America - and comes up with answers that are moving and meaningful, that make you laugh and cry.',3,2);
+INSERT INTO review (id,user_review,id_movie,id_user) VALUES (2,'It''s a rare movie that asks such big questions - about parenting, about family, about modern-day America - and comes up with answers that are moving and meaningful, that make you laugh and cry.',4,1);
 INSERT INTO review (id,user_review,id_movie,id_user) VALUES (3,'It has charm but it''s hard to believe in a man of such diverse talents, while the laboured eccentricities madden as much as entertain.',2,1);
 INSERT INTO user (id,login, password, user_name, city) VALUES (1,'admin', '1234', 'Adam Nowak', 'Warsaw');
 INSERT INTO user (id,login, password, user_name, city) VALUES (2,'kaskaMalpa', 'haslo123', 'Joe Grams', 'London');

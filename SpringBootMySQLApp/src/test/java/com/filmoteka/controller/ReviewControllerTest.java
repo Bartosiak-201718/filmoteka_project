@@ -21,9 +21,9 @@ public class ReviewControllerTest {
 
     @Test
     public void getReview() {
-        get("/api/reviews/1").then().statusCode(200).assertThat()
+        get("/api/reviews/2").then().statusCode(200).assertThat()
                 .body("userReview", equalTo(firstReview))
-                .body("id", equalTo(1));
+                .body("id", equalTo(2));
     }
 
     @Test
@@ -125,5 +125,5 @@ public class ReviewControllerTest {
         return movie;
     }
 
-    public final String firstReview = "This is really a movie for upper-middle class hipsters who once fancied themselves firebrands and status quo-challengers in college, but now consider only buying organic food at Whole Foods and not vaccinating their kids to be radical acts.";
+    public final String firstReview = "It's a rare movie that asks such big questions - about parenting, about family, about modern-day America - and comes up with answers that are moving and meaningful, that make you laugh and cry.";
 }
